@@ -413,6 +413,12 @@ typedef void (^NavigatorUserMediaSuccessCallback)(RTCMediaStream* mediaStream);
 
   if (videoDevice) {
     RTCVideoSource* videoSource = [self.peerConnectionFactory videoSource];
+    [videoSource 
+      adaptOutputFormatToWidth: targetWidth 
+      height: targetHeight
+      fps: targetFps
+    ];
+    
     if (self.videoCapturer) {
       [self.videoCapturer stopCapture];
     }
